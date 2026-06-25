@@ -46,6 +46,8 @@
   footer{text-align:center;color:#9ca3af;border-top:1px solid #374151;padding:34px 20px 60px;margin-top:30px;font-size:.9em}
   .small{font-size:.85em;color:#6b7280;margin-top:10px}
   .lang-en{display:none}
+  body.en .lang-ru{display:none}
+  body.en .lang-en{display:inline}
   @keyframes glow{0%,100%{box-shadow:0 0 0 rgba(34,197,94,0)}50%{box-shadow:0 0 20px rgba(34,197,94,.7)}}
   @media(max-width:600px){header.hero h1{font-size:2.1em}}
 </style>
@@ -145,12 +147,9 @@ python -m PyInstaller --onefile --windowed --icon=icon.ico --add-data "icon.ico;
 </footer>
 
 <script>
-  // язык
-  var en=false;
+  // язык (переключаем класс на body — надёжно поверх CSS)
   document.getElementById('langToggle').addEventListener('click',function(){
-    en=!en;
-    document.querySelectorAll('.lang-ru').forEach(function(e){e.style.display=en?'none':'';});
-    document.querySelectorAll('.lang-en').forEach(function(e){e.style.display=en?'':'none';});
+    var en=document.body.classList.toggle('en');
     this.textContent=en?'RU':'EN';
     document.documentElement.lang=en?'en':'ru';
   });
@@ -160,5 +159,7 @@ python -m PyInstaller --onefile --windowed --icon=icon.ico --add-data "icon.ico;
   },{threshold:.12});
   document.querySelectorAll('section').forEach(function(s){io.observe(s);});
 </script>
+</body>
+</html>
 </body>
 </html>
