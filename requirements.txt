@@ -1,0 +1,3 @@
+# Runtime: только стандартная библиотека Python (tkinter входит в Python для Windows).
+# Для сборки .exe:
+pyinstaller>=6.0
